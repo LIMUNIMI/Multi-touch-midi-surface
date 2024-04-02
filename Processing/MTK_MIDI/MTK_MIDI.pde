@@ -11,13 +11,7 @@
 
 
 /*
-This example shows how to use "Multi-Touch Kit Processing library" in your code.
-
-This example contains the most important options of the library and tries to explain what they do.
-
-It is recommended that you also read the comments in the sourcecode/the documentation.
-
-Please insert the correct Serial Port and number of RX and TX based on the size of the sensor
+Implementation of a capacitive multi-touch MIDI surface instrument as a final bachelor essay by Shawn Pinciara. Suing the "Multi-Touch Kit Processing library".
 */
 
 
@@ -25,21 +19,24 @@ import gab.opencv.*;
 import MultiTouchKitUI.*;
 import processing.serial.*;
 import blobDetection.*;
-import themidibus.*; //Import the library
+import themidibus.*;
+
+
+//Options:
+
+//Here you will have to set the tx/rx numbers, as well as the serial port
+int tx = 8;               //number of transmitter lines (tx)
+int rx = 5;               //number of receiver lines (rx)
+int serialPort = 1;       //index of the serial port that the Arduino is connected to
+int maxInputRange = 170;  // set the brightness of touch points
+float threshold = 0.8f;  // set the threshold for blob detection
+int gridSize = 80; // use this to scale the size of the output picture (with small sensors you might want to increase the number, with big sensors maybe you want to decrease it)
 
 
 Table table;
-
-//Here you will have to set the tx/rx numbers, as well as the serial port
-int tx = 8;               //number of transmitter lines (rx)
-int rx = 5;               //number of receiver lines (rx)
-//int tx = 4;               //number of transmitter lines (rx)
-//int rx = 4;               //number of receiver lines (rx)
-int serialPort = 1;       //serial port that the Arduino is connected to
 boolean debounceB0press = true;
 boolean debounceB0release = false;
 int recordingIndex = 0;
-
 Serial myPort;
 MultiTouchKit mtk;
 MidiBus midiBus;
@@ -48,10 +45,6 @@ BlobMidi midiBlob1;
 BlobMidi midiBlob2;
 BlobMidi midiBlob3;
 BlobMidi midiBlob4;
-
-int maxInputRange = 170;  // set the brightness of touch points
-float threshold = 0.8f;  // set the threshold for blob detection
-int gridSize = 80; // use this to scale the size of the output picture (with small sensors you might want to increase the number, with big sensors maybe you want to decrease it)
 
 class BlobMidi {
   private int id;
