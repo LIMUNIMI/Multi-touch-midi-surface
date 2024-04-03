@@ -1,5 +1,6 @@
 # Multi-touch-midi-surface
 A DIY capacitive multi-touch midi instrument, protoyped as a bachelor final essay by Shawn Pinciara.
+The project is based on [the work](https://hci.cs.uni-saarland.de/projects/multi-touch-kit/) of Narjes Pourjafarian, Anusha Withana, Joseph A. Paradiso and Jürgen Steimle.
 ![The multi-touch surface](/Src/arduino_mega_surface.jpg)
 
 # Tutorial:
